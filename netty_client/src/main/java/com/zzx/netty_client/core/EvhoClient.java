@@ -36,13 +36,9 @@ public class EvhoClient {
                     }
                 });
         ChannelFuture future=bootstrap.connect().sync();
-        try {
-            future.channel().closeFuture().sync();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }finally {
-            group.shutdownGracefully().sync();
-        }
+        //uture.channel().closeFuture().sync();
+        group.shutdownGracefully().sync();
+
 
     }
 
