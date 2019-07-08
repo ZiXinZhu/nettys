@@ -39,8 +39,11 @@ public class EchoServer {
                     });
 
             ChannelFuture future=bootstrap.bind().sync();
-            //future.channel().closeFuture().sync();
-        }catch (Exception e){}finally {
+
+            future.channel().closeFuture().sync();
+
+        }
+        finally {
             group.shutdownGracefully().sync();
         }
     }

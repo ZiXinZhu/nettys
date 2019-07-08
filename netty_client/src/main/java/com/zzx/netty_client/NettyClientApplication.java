@@ -10,7 +10,7 @@ public class NettyClientApplication {
     public static void main(String[] args) {
         SpringApplication.run(NettyClientApplication.class, args);
         try {
-            new EvhoClient("192.168.0.106",8456).start();
+            new EvhoClient("192.168.0.103",8456).start();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

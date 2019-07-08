@@ -24,6 +24,7 @@ public class EvhoClient {
     public void start() throws InterruptedException {
         EchoClientHandler handler=new EchoClientHandler();
         EventLoopGroup group=new NioEventLoopGroup();
+        try {
         Bootstrap bootstrap=new Bootstrap();
         bootstrap.group(group)
                 .channel(NioSocketChannel.class)
@@ -36,9 +37,13 @@ public class EvhoClient {
                     }
                 });
         ChannelFuture future=bootstrap.connect().sync();
-        //uture.channel().closeFuture().sync();
-        group.shutdownGracefully().sync();
 
+            future.channel().closeFuture().sync();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }finally {
+            group.shutdownGracefully().sync();
+        }
 
     }
 
